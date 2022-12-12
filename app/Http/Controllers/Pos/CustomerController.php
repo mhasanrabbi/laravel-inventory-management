@@ -58,24 +58,53 @@ class CustomerController extends Controller
 
     public function update(Request $request)
     {
-        $id = $request->id;
+        $customer_id = $request->id;
+        if ($request->file('customer_image')) {
 
-        Customer::findOrFail($id)->update([
-            'name' => $request->name,
-            'mobile_no' => $request->mobile_no,
-            'email' => $request->email,
-            'address' => $request->address,
-            'updated_by' => Auth::user()->id,
-            'updated_at' => Carbon::now(),
-        ]);
+            $image = $request->file('customer_image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension(); // 343434.png
+            Image::make($image)->resize(200, 200)->save('upload/customer/' . $name_gen);
+            $save_url = 'upload/customer/' . $name_gen;
 
-        $notification = array(
-            'message' => 'Customer Updated Successfully',
-            'alert-type' => 'success'
-        );
+            Customer::findOrFail($customer_id)->update([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'customer_image' => $save_url,
+                'updated_by' => Auth::user()->id,
+                'updated_at' => Carbon::now(),
 
-        return redirect()->route('customer.all')->with($notification);
-    }
+            ]);
+
+            $notification = array(
+                'message' => 'Customer Updated with Image Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('customer.all')->with($notification);
+        } else {
+
+            Customer::findOrFail($customer_id)->update([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'updated_by' => Auth::user()->id,
+                'updated_at' => Carbon::now(),
+
+            ]);
+
+            $notification = array(
+                'message' => 'Customer Updated without Image Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('customer.all')->with($notification);
+        } // end else
+
+    } // End Method
+
 
     public function destroy($id)
     {

@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Edit {{ $customer->name}}</h4><br/>
+                        <h4 class="card-title">Edit {{ $customer->name}}</h4><br />
 
                         <form method="POST" action="{{ route('customer.update') }}" id="myForm">
                             @csrf
@@ -19,27 +19,44 @@
                             <input type="hidden" name="id" value="{{ $customer->id}}">
 
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Name</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Name</label>
                                 <div class="form-group col-sm-10">
                                     <input name="name" class="form-control" type="text" value="{{ $customer->name }}">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Mobile</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Mobile</label>
                                 <div class="form-group col-sm-10">
-                                    <input  value="{{ $customer->mobile_no }}" name="mobile_no" class="form-control" type="text">
+                                    <input value="{{ $customer->mobile_no }}" name="mobile_no" class="form-control"
+                                        type="text">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Email</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Email</label>
                                 <div class="form-group col-sm-10">
-                                    <input  value="{{ $customer->email }}" name="email" class="form-control" type="email">
+                                    <input value="{{ $customer->email }}" name="email" class="form-control"
+                                        type="email">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Address</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Address</label>
                                 <div class="form-group col-sm-10">
-                                    <input  value="{{ $customer->address }}" name="address" class="form-control" type="text">
+                                    <input value="{{ $Customer->address }}" name="address" class="form-control"
+                                        type="text">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Image </label>
+                                <div class="form-group col-sm-10">
+                                    <input name="customer_image" class="form-control" type="file" id="image"
+                                        name="customer_image">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
+                                <div class="col-sm-10">
+                                    <img id="showImage" class="rounded avatar-lg"
+                                        src="{{asset($customer->customer_image)}}" alt="Card image cap">
                                 </div>
                             </div>
 
