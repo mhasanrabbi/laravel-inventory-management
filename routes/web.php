@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\Pos\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,11 +38,15 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/delete/{id}', 'destroy')->name('supplier.delete');
 });
 
-
-
-
-
-
+// Customer Route
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/customer', 'index')->name('customer.all');
+    Route::get('/customer/create', 'create')->name('customer.create');
+    Route::post('/customer/store', 'store')->name('customer.store');
+    Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
+    Route::put('/customer/update', 'update')->name('customer.update');
+    Route::get('/customer/delete/{id}', 'destroy')->name('customer.delete');
+});
 
 
 Route::get('/dashboard', function () {
