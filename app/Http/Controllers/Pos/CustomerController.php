@@ -108,6 +108,8 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
+
+
         Customer::findOrFail($id)->delete();
 
 

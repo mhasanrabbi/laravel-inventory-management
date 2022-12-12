@@ -5,6 +5,7 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Pos\CustomerController;
+use App\Http\Controllers\Pos\UnitController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,6 +47,16 @@ Route::controller(CustomerController::class)->group(function () {
     Route::get('/customer/edit/{id}', 'edit')->name('customer.edit');
     Route::put('/customer/update', 'update')->name('customer.update');
     Route::get('/customer/delete/{id}', 'destroy')->name('customer.delete');
+});
+
+// Unit Route
+Route::controller(UnitController::class)->group(function () {
+    Route::get('/unit', 'index')->name('unit.all');
+    Route::get('/unit/create', 'create')->name('unit.create');
+    Route::put('/unit/store', 'store')->name('unit.store');
+    Route::get('/unit/edit/{id}', 'edit')->name('unit.edit');
+    Route::put('/unit/update', 'update')->name('unit.update');
+    Route::get('/unit/delete/{id}', 'destroy')->name('unit.delete');
 });
 
 
