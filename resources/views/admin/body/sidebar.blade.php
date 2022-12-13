@@ -12,7 +12,7 @@
                             <li class="menu-title">Menu</li>
 
                             <li>
-                                <a href="index.html" class="waves-effect">
+                                <a href="/dashboard" class="waves-effect">
                                     <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
                                     <span>Dashboard</span>
                                 </a>
@@ -27,6 +27,7 @@
                                     <li><a href="{{route('supplier.all')}}">All Suppliers</a></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-mail-send-line"></i>
@@ -36,6 +37,7 @@
                                     <li><a href="{{route('customer.all')}}">All Customers</a></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-mail-send-line"></i>
@@ -45,6 +47,7 @@
                                     <li><a href="{{route('unit.all')}}">All Units</a></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-mail-send-line"></i>
@@ -54,6 +57,7 @@
                                     <li><a href="{{route('category.all')}}">All Categories</a></li>
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-mail-send-line"></i>
@@ -61,6 +65,16 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{route('product.all')}}">All Products</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="ri-mail-send-line"></i>
+                                    <span>Manage Purchases</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('purchase.all')}}">All Purchase</a></li>
                                 </ul>
                             </li>
 

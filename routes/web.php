@@ -1,13 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Demo\DemoController;
-use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Pos\UnitController;
+use App\Http\Controllers\Demo\DemoController;
+use App\Http\Controllers\Pos\DefaultController;
+use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\CustomerController;
-use App\Http\Controllers\Pos\ProductController;
-use App\Http\Controllers\Pos\UnitController;
+use App\Http\Controllers\Pos\PurchaseController;
+use App\Http\Controllers\Pos\SupplierController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -79,6 +81,17 @@ Route::controller(ProductController::class)->group(function () {
     Route::get('/product/edit/{id}', 'edit')->name('product.edit');
     Route::put('/product/update', 'update')->name('product.update');
     Route::get('/product/delete/{id}', 'destroy')->name('product.delete');
+});
+
+// Purchase Route
+Route::controller(PurchaseController::class)->group(function () {
+    Route::get('/purchase', 'index')->name('purchase.all');
+    Route::get('/purchase/create', 'create')->name('purchase.create');
+});
+
+// Deafult Route
+Route::controller(DefaultController::class)->group(function () {
+    Route::get('/get-category', 'getCategory')->name('get-category');
 });
 
 
