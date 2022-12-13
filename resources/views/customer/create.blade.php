@@ -22,19 +22,19 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Mobile</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Mobile</label>
                                 <div class="form-group col-sm-10">
                                     <input name="mobile_no" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Email</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Email</label>
                                 <div class="form-group col-sm-10">
                                     <input name="email" class="form-control" type="email">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">customer Address</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Customer Address</label>
                                 <div class="form-group col-sm-10">
                                     <input name="address" class="form-control" type="text">
                                 </div>
@@ -84,7 +84,7 @@
                     required : true,
                 },
                 customer_image: {
-                    required : true,
+                    required : false,
                 }
             },
             messages :{

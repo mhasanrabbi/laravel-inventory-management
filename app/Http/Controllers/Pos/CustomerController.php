@@ -24,22 +24,34 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->file('customer_image')) {
+            $image = $request->file('customer_image');
+            $name_gen = date('YmdHi') . $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension(); // 343434.png
+            Image::make($image)->resize(200, 200)->save('upload/customer/' . $name_gen);
+            $save_url = 'upload/customer/' . $name_gen;
 
-        $image = $request->file('customer_image');
-        $name_gen = date('YmdHi') . $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension(); // 343434.png
-        Image::make($image)->resize(200, 200)->save('upload/customer/' . $name_gen);
-        $save_url = 'upload/customer/' . $name_gen;
+            Customer::insert([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'customer_image' => $save_url,
+                'created_by' => Auth::user()->id,
+                'created_at' => Carbon::now(),
 
-        Customer::insert([
-            'name' => $request->name,
-            'mobile_no' => $request->mobile_no,
-            'email' => $request->email,
-            'address' => $request->address,
-            'customer_image' => $save_url,
-            'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(),
+            ]);
+        } else {
+            Customer::insert([
+                'name' => $request->name,
+                'mobile_no' => $request->mobile_no,
+                'email' => $request->email,
+                'address' => $request->address,
+                'customer_image' => "no image",
+                'created_by' => Auth::user()->id,
+                'created_at' => Carbon::now(),
 
-        ]);
+            ]);
+        }
 
         $notification = array(
             'message' => 'Customer Inserted Successfully',
