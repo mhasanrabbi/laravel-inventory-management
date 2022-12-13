@@ -34,7 +34,7 @@
         </div>
     </form>
 
-    
+
 </div>
 
 <div class="d-flex">
@@ -72,8 +72,8 @@
         </div>
     </div>
 
-                        
-            
+
+
                     </div>
                 </div>
             </header>
