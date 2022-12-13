@@ -92,6 +92,7 @@ Route::controller(PurchaseController::class)->group(function () {
 // Deafult Route
 Route::controller(DefaultController::class)->group(function () {
     Route::get('/get-category', 'getCategory')->name('get-category');
+    Route::get('/get-product', 'getProduct')->name('get-product');
 });
 
 
