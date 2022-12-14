@@ -83,7 +83,7 @@
                     </div> <!-- End card-body -->
 
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="{{ route('purchase.store')}}" method="POST">
                             @csrf
                             <table class="table-sm table-bordered" width="100%" style="border-color: #ddd;">
                                 <thead>

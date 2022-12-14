@@ -87,6 +87,8 @@ Route::controller(ProductController::class)->group(function () {
 Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase', 'index')->name('purchase.all');
     Route::get('/purchase/create', 'create')->name('purchase.create');
+    Route::post('/purchase/store', 'store')->name('purchase.store');
+    Route::post('/purchase/{id}/delete', 'destroy')->name('purchase.delete');
 });
 
 // Deafult Route
