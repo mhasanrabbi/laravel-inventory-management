@@ -41,7 +41,6 @@
                                     <th>Supplier</th>
                                     <th>Unit</th>
                                     <th>Category</th>
-                                    <th>Quantity</th>
                                     <th>Action</th>
                             </thead>
                             <tbody>
@@ -52,7 +51,6 @@
                                     <td> {{ $product->supplier->name }} </td>
                                     <td> {{ $product->unit->name }} </td>
                                     <td> {{ $product->category->name }} </td>
-                                    <td> {{ $product->quantity }} </td>
                                     <td>
                                         <a href="{{ route('product.edit', $product->id)}}" class="btn btn-info sm"
                                             title="Edit Data"> <i class="fas fa-edit"></i> </a>

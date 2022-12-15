@@ -88,7 +88,9 @@ Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase', 'index')->name('purchase.all');
     Route::get('/purchase/create', 'create')->name('purchase.create');
     Route::post('/purchase/store', 'store')->name('purchase.store');
-    Route::post('/purchase/{id}/delete', 'destroy')->name('purchase.delete');
+    Route::get('/purchase/{id}/delete', 'destroy')->name('purchase.delete');
+    Route::get('/purchase/pending', 'pending')->name('purchase.pending');
+    Route::get('/purchase/approve/{id}', 'approve')->name('purchase.approve');
 });
 
 // Deafult Route

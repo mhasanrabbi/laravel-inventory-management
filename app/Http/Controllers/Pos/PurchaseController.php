@@ -63,4 +63,43 @@ class PurchaseController extends Controller
         );
         return redirect()->route('purchase.all')->with($notification);
     } // end method
+
+    public function destroy($id)
+    {
+        Purchase::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Purchase Iteam Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function pending()
+    {
+        $data = Purchase::orderBy('date', 'desc')->orderBy('id', 'desc')->where('status', '0')->get();
+        return view('purchase.pending', compact('data'));
+    }
+
+    public function approve($id)
+    {
+        $purchase = Purchase::findOrFail($id);
+        $product = Product::where('id', $purchase->product_id)->first();
+        $purchase_qty = ((float)($purchase->buying_qty)) + ((float)($product->quantity));
+        // dd($purchase_qty);
+        $product->quantity = $purchase_qty;
+
+        if ($product->save()) {
+
+            Purchase::findOrFail($id)->update([
+                'status' => '1',
+            ]);
+
+            $notification = array(
+                'message' => 'Status Approved Successfully',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('purchase.all')->with($notification);
+        }
+    }
 };

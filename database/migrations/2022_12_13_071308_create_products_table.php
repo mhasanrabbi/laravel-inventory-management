@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('unit_id');
             $table->integer('category_id');
             $table->string('name');
-            $table->double('quantity')->default('0');
+            $table->double('quantity');
             $table->tinyInteger('status')->default('1');
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
